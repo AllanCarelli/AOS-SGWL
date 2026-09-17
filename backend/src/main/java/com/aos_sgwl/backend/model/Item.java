@@ -32,4 +32,40 @@ public class Item {
     @Column(nullable = false)
     private boolean comprado = false;
 
+    public Item(){}
+
+
+    public long getId() {
+        return id;
+    }
+    public String getName() {
+        return name;
+    }
+    public double getPreco() {
+        return preco;
+    }
+    public String getPrioridade() {
+        return prioridade;
+    }
+
+    public void setComprado(boolean comprado) {
+        this.comprado = comprado;
+    }
+    public void setId(long id) {
+        this.id = id;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public void setPreco(double preco) {
+        this.preco = preco;
+    }
+    public void setPrioridade(String prioridade) {
+        this.prioridade = prioridade;
+    }
+
+    @Override
+    public String toString(){
+        return "[ id: " + id + " | name: " + name + " | preco: " + preco + " | prioridade: " + prioridade + " ]";
+    }
 }
