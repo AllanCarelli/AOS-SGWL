@@ -12,7 +12,7 @@ import jakarta.validation.constraints.Positive;
 @Entity
 //Define o nome que sera usado no banco
 @Table(name = "item")
-@
+
 
 public class Item {
     //Define como ID(chave-primaria), que e gerado automaticamente ao se criar uma nova entidade
