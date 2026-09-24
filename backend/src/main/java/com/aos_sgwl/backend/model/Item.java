@@ -35,6 +35,12 @@ public class Item {
 
     public Item(){}
 
+    public Item(String name, double preco, String prioridade){
+        this.name = name;
+        this.preco = preco;
+        this.prioridade = prioridade;
+    }
+
     //Getters e Setters
     public long getId() {
         return id;
