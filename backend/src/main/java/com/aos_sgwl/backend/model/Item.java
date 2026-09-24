@@ -12,6 +12,7 @@ import jakarta.validation.constraints.Positive;
 @Entity
 //Define o nome que sera usado no banco
 @Table(name = "item")
+@
 
 public class Item {
     //Define como ID(chave-primaria), que e gerado automaticamente ao se criar uma nova entidade
@@ -33,6 +34,12 @@ public class Item {
     private boolean comprado = false;
 
     public Item(){}
+
+    public Item(String name, double preco, String prioridade){
+        this.name = name;
+        this.preco = preco;
+        this.prioridade = prioridade;
+    }
 
     //Getters e Setters
     public long getId() {
