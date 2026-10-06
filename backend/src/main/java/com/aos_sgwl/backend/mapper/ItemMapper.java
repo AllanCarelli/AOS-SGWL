@@ -25,4 +25,13 @@ public class ItemMapper {
     }
     
 
+
+    public static Item ToEntity(ItemDTO itemDTO) {
+            return new Item(
+                itemDTO.getName
+                itemDTO.getId
+                itemDTO.getPreco
+                itemDTO.getPrioridade
+    )
+}
 }
