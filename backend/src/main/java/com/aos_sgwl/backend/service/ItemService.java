@@ -25,7 +25,7 @@ public class ItemService {
     public List<ItemDTO> getAllItem(){
         return itemRepository.findAll().stream().map(ItemMapper::toDTO).toList();    
     }
-
+    
     // Busca um item pelo ID
     public List<ItemDTO> getItemById(Long id){
         return itemRepository.findById(id).map(ItemMapper::toDTO);
@@ -48,7 +48,7 @@ public class ItemService {
             return ItemMapper.toDTO(itemRepository.save(product));
         })
     }
-    
+
     // Verifica se existe e exclui o item
     public boolean deleteItem(Long id){
         if (!itemRepository.existsById(id)) return false;
