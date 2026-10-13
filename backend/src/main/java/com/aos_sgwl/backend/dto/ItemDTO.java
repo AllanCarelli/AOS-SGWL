@@ -29,6 +29,9 @@ public class ItemDTO {
     @Schema(description = "Prioridade do item", example = "média")
     private String prioridade;
 
+    @Schema(description = "Indica se item já foi comprado ou não", example = "false")
+    private boolean comprado;
+
     // Construtor é usado pelo ProductMapper para montar o DTO a partir da entidade
     public ItemDTO(Long id, String name, double preco, String prioridade){
         this.id = id;
@@ -53,6 +56,10 @@ public class ItemDTO {
         return prioridade;
     }
 
+    public boolean getComprado() {
+        return comprado;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -65,6 +72,10 @@ public class ItemDTO {
     }
     public void setPrioridade(String prioridade) {
         this.prioridade = prioridade;
+    }
+
+    public void setComprado(boolean comprado) {
+        this.comprado = comprado;
     }
 
 

@@ -54,6 +54,9 @@ public class Item {
     public String getPrioridade() {
         return prioridade;
     }
+    public Boolean getComprado() {
+        return comprado;
+    }
 
     public void setComprado(boolean comprado) {
         this.comprado = comprado;

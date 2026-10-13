@@ -1,12 +1,14 @@
 package com.aos_sgwl.backend.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+
 import com.aos_sgwl.backend.dto.ItemDTO;
 import com.aos_sgwl.backend.mapper.ItemMapper;
-import com.aos_sgwl.repository.ItemRepository;
+import com.aos_sgwl.backend.repository.ItemRepository;
 
 
 @Service 
@@ -23,17 +25,17 @@ public class ItemService {
 
     // Busca todos os itens e transforma em DTO
     public List<ItemDTO> getAllItem(){
-        return itemRepository.findAll().stream().map(ItemMapper::toDTO).toList();    
+        return itemRepository.findAll().stream().map(itemMapper::toDTO).toList();    
     }
     
     // Busca um item pelo ID
-    public List<ItemDTO> getItemById(Long id){
-        return itemRepository.findById(id).map(ItemMapper::toDTO);
+    public Optional<ItemDTO> getItemById(Long id){
+        return itemRepository.findById(id).map(itemMapper::toDTO);
     }
 
     // Cria e salva um novo item
     public ItemDTO createItem(ItemDTO itemDTO){
-       return ItemMapper.toDTO(itemRepository.save(ItemMapper.toEntity(itemDTO)));
+        return itemMapper.toDTO(itemRepository.save(itemMapper.toEntity(itemDTO)));
 
     }
 
@@ -44,16 +46,16 @@ public class ItemService {
             item.setName(itemDTO.getName());
             item.setPrioridade(itemDTO.getPrioridade());
             item.setPreco(itemDTO.getPreco());
-            item.setComprado(itemDTO.getComprado())
-            return ItemMapper.toDTO(itemRepository.save(product));
-        })
+            item.setComprado(itemDTO.getComprado());
+            return itemMapper.toDTO(itemRepository.save(item));
+        });
     }
 
     // Verifica se existe e exclui o item
     public boolean deleteItem(Long id){
         if (!itemRepository.existsById(id)) return false;
-        ItemRepository.deleteById(id);
-        return true
+        itemRepository.deleteById(id);
+        return true;
     }
 
 }
