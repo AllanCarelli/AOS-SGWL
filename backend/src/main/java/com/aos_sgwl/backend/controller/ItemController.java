@@ -32,27 +32,27 @@ public class ItemController {
     public ItemController(ItemService itemService){
         this.ItemService = itemService;
     }
-
+    // Lista todos os itens cadastrados
     @GetMapping
     public List<ItemDTO> getAll() {
         return ItemService.getAllItem();
     }
-
+    // Busca item por ID, se não houver retorna erro 404
     @GetMapping("/{id}")
     public ResponseEntity<ItemDTO> getById(@PathVariable Long id){
         return ItemService.getItemById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
-
+    // Cria um novo item, retorna 201 caso criado
     @PostMapping("/{id}")
     public ResponseEntity<ItemDTO> create(@Valid @RequestBody ItemDTO itemDTO) {
         return ResponseEntity.status(201).body(ItemService.createItem(itemDTO));
     }
-
+    // Atualiza os dados de um item ja cadast rado, retorna 404 se não existir
     @PutMapping("/{id}")
     public ResponseEntity<ItemDTO> update(@PathVariable long id, @Valid @RequestBody ItemDTO itemDTO) {
         return ItemService.updateItem(id, itemDTO).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
-
+    // Exclui o item pelo ID
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable long id) {
         return ItemService.deleteItem(id) ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
